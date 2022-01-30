@@ -5,7 +5,7 @@ const express = require('express');
 const path = require('path');
 
 const DIST_DIR = './dist';
-const HOST = process.env.API_HOST || 'localhost';
+//const HOST = process.env.API_HOST || 'localhost';
 const PORT = process.env.API_PORT || 3001;
 
 const app = express();
@@ -23,6 +23,6 @@ app.get('/api/v1/endpoint', (req, res) => {
 
 app.listen(PORT, () =>
     console.log(
-        `✅  API Server started: http://${HOST}:${PORT}/api/v1/endpoint`
+        `✅  API Server started: `
     )
 );
