@@ -1,7 +1,6 @@
 export const getDataFromSF = async () => {
-    //subreddit = subreddit || "worldnews";
     const resp = await (
-      await fetch(`https://intelligent-code.herokuapp.com/`, {
+      await fetch(`https://intelligent-code-app.herokuapp.com/read`, {
         mode: "no-cors",
         headers: { Accept: "application/json" },
       })
