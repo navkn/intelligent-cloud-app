@@ -19,7 +19,7 @@ establishConnectionToSF();
 app.use(express.static(DIST_DIR));
 app.use(helmet());
 app.use(compression());
-app.use(/^(?!\/api).+/, (req, res) => {
+app.use('/home', (req, res) => {
     res.sendFile(path.resolve(DIST_DIR, 'index.html'));
 });
 
@@ -44,6 +44,10 @@ app.get("/create",async (req,res)=>{
     }
 })
 
+app.get("/signin",async()=>{
+    if(jwtToken) await establishConnectionToSF()
+    else console.log('Token is already present',jwtToken)
+})
 
 async function getAccessTokenFromJWT(){
     try{
