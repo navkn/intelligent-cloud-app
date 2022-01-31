@@ -19,7 +19,7 @@ establishConnectionToSF();
 app.use(express.static(DIST_DIR));
 app.use(helmet({
     contentSecurityPolicy: false,
-  }));
+  }).crossOriginResourcePolicy({ policy: "same-site" }));
 app.use(compression());
 app.use('/home', (req, res) => {
     res.sendFile(path.resolve(DIST_DIR, 'index.html'));
