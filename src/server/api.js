@@ -17,14 +17,9 @@ var conn ;
 establishConnectionToSF();
 
 app.use(express.static(DIST_DIR));
-app.use(helmet.contentSecurityPolicy({
-    directives:{
-        defaultSrc:["'self'"],
-        imgSrc :["'self'"],
-        scriptSrc :["'self'"],
-        contentSrc :["'self'"],
-    }
-}));
+app.use(helmet({
+    contentSecurityPolicy: false,
+  }));
 app.use(compression());
 app.use('/home', (req, res) => {
     res.sendFile(path.resolve(DIST_DIR, 'index.html'));
