@@ -1,4 +1,11 @@
 <template>
     This is just for my reference .
-    {result}
+    <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                show-row-number-column
+                data={result}
+                columns={columns}>
+        </lightning-datatable>
+    </div>    
 </template>

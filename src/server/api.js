@@ -84,7 +84,7 @@ async function establishConnectionToSF(){
 }
 async function queryDataFromSF(){
     console.log('Querying for accounts')
-    let result= await conn.query("Select id from Account")
+    let result= await conn.query("Select Id,Phone,Site,Name from Account")
     return result
 }
 
