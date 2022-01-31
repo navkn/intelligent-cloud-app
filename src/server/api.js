@@ -18,6 +18,7 @@ establishConnectionToSF();
 
 app.use(express.static(DIST_DIR));
 app.use(helmet({contentSecurityPolicy: false}));
+app.use(helmet({ crossOriginEmbedderPolicy: false }))
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(compression());
 app.use('/home', (req, res) => {
