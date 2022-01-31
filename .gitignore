@@ -30,3 +30,6 @@ $RECYCLE.BIN/
 
 # Husky
 .husky
+
+#slds-resources
+/src/client/resources/assets

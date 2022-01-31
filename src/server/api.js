@@ -45,7 +45,7 @@ app.get("/create",async (req,res)=>{
 })
 
 app.get("/signin",async()=>{
-    if(jwtToken) await establishConnectionToSF()
+    if(jwtToken===undefined) await establishConnectionToSF()
     else console.log('Token is already present',jwtToken)
 })
 
