@@ -6,7 +6,7 @@ const { getToken } = require('sf-jwt-token')
 const jsforce = require('jsforce')
 const path = require('path');
 
-const DIST_DIR = './dist/';
+const DIST_DIR = './dist';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3001;
 
@@ -17,9 +17,8 @@ var conn ;
 establishConnectionToSF();
 
 app.use(express.static(DIST_DIR));
-app.use(helmet({
-    contentSecurityPolicy: false,
-  }).crossOriginResourcePolicy({ policy: "same-site" }));
+app.use(helmet.contentSecurityPolicy({useDefaults: false}));
+app.use(helmet.crossOriginResourcePolicy({ policy: "same-site" }));
 app.use(compression());
 app.use('/home', (req, res) => {
     res.sendFile(path.resolve(DIST_DIR, 'index.html'));
