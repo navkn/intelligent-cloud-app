@@ -17,7 +17,7 @@ var conn ;
 establishConnectionToSF();
 
 app.use(express.static(DIST_DIR));
-app.use(helmet.contentSecurityPolicy({useDefaults: false}));
+app.use(helmet({contentSecurityPolicy: false}));
 app.use(helmet.crossOriginResourcePolicy({ policy: "same-site" }));
 app.use(compression());
 app.use('/home', (req, res) => {
