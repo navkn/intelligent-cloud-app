@@ -16,9 +16,9 @@ var jwtToken;
 var conn ;
 const cspHeader=helmet.contentSecurityPolicy({
     directives: {
-        scriptSrc: ["'self'", "intelligent-cloud-app.herokuapp.com"],
-        connectSrc: ["'self'", "intelligent-cloud-app.herokuapp.com/read"],
-        defaultSrc: ["'self'", "intelligent-cloud-app.herokuapp.com/read"]
+        scriptSrc: ["'self'", "https://intelligent-cloud-app.herokuapp.com/read"],
+        connectSrc: ["'self'", "https://intelligent-cloud-app.herokuapp.com/read"],
+        defaultSrc: ["'self'", "https://intelligent-cloud-app.herokuapp.com/read"]
     },
   })
 establishConnectionToSF();
