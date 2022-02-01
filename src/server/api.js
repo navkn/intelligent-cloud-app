@@ -20,7 +20,7 @@ app.use(express.static(DIST_DIR));
 app.use(helmet.contentSecurityPolicy({
     directives: {
       "script-src": ["'self'", "intelligent-cloud-app.herokuapp.com"],
-      "content-src": ["'self'", "intelligent-cloud-app.herokuapp.com"],
+      "connect-src": ["'self'", "intelligent-cloud-app.herokuapp.com/read"],
     },
   }));
 app.use(helmet({ crossOriginEmbedderPolicy: true }))
