@@ -28,13 +28,13 @@ app.use(cspHeader);
 app.use(helmet({ crossOriginEmbedderPolicy: true }))
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(compression());
-app.use('/home',cspHeader, (req, res) => {
+app.get('/home',cspHeader, (req, res) => {
     res.sendFile(path.resolve(DIST_DIR, 'index.html'));
 });
 app.get('/read', async (req, res) => {
     try{
         let results =await queryDataFromSF()
-        res.json(results);res.
+        res.json(results);
         console.log('Priniting the accounts: ',results)
     }
     catch(error){
