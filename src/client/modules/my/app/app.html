@@ -1,3 +1,11 @@
 <template>
-    Hello Navenn
+    Data received from SF Org:
+    <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                show-row-number-column
+                data={result}
+                columns={columns}>
+        </lightning-datatable>
+    </div> 
 </template>

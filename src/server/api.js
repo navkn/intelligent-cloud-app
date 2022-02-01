@@ -14,21 +14,14 @@ const app = express();
 
 var jwtToken;
 var conn ;
-const cspHeader=helmet.contentSecurityPolicy({
-    directives: {
-        scriptSrc: ["'self'", "https://intelligent-cloud-app.herokuapp.com/read"],
-        connectSrc: ["'self'", "https://intelligent-cloud-app.herokuapp.com/read"],
-        defaultSrc: ["'self'", "https://intelligent-cloud-app.herokuapp.com/read"]
-    },
-  })
 establishConnectionToSF();
 
 app.use(express.static(DIST_DIR));
-app.use(cspHeader);
+app.use(helmet())
 app.use(helmet({ crossOriginEmbedderPolicy: true }))
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(compression());
-app.get('/home',cspHeader, (req, res) => {
+app.get('/home', (req, res) => {
     res.sendFile(path.resolve(DIST_DIR, 'index.html'));
 });
 app.get('/read', async (req, res) => {
