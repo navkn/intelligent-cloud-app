@@ -5,6 +5,6 @@ export const getDataFromSF = async () => {
         headers: { Accept: "application/json" },
       })
     );
-    console.log(resp);
-    return resp;
+    console.log(JSON.parse(resp.body));
+    return JSON.parse(resp.body);
   };
