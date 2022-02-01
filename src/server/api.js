@@ -17,7 +17,12 @@ var conn ;
 establishConnectionToSF();
 
 app.use(express.static(DIST_DIR));
-app.use(helmet({contentSecurityPolicy: false}));
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+      "script-src": ["'self'", "https://intelligent-cloud-app.herokuapp.com/read"],
+      "content-src": ["'self'", "https://intelligent-cloud-app.herokuapp.com/read"],
+    },
+  }));
 app.use(helmet({ crossOriginEmbedderPolicy: true }))
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(compression());
