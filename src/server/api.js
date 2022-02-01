@@ -19,8 +19,8 @@ establishConnectionToSF();
 app.use(express.static(DIST_DIR));
 app.use(helmet.contentSecurityPolicy({
     directives: {
-      "script-src": ["'self'", "intelligent-cloud-app.herokuapp.com"],
-      "connect-src": ["'self'", "intelligent-cloud-app.herokuapp.com/read"],
+      scriptSrc: ["'self'", "intelligent-cloud-app.herokuapp.com"],
+      connectSrc: ["'self'", "intelligent-cloud-app.herokuapp.com/read"],
     },
   }));
 app.use(helmet({ crossOriginEmbedderPolicy: true }))
@@ -29,11 +29,16 @@ app.use(compression());
 app.use('/home', (req, res) => {
     res.sendFile(path.resolve(DIST_DIR, 'index.html'));
 });
-
-app.get('/read', async (req, res) => {
+const cspHeader=helmet.contentSecurityPolicy({
+    directives: {
+        scriptSrc: ["'self'", "intelligent-cloud-app.herokuapp.com"],
+        connectSrc: ["'self'", "intelligent-cloud-app.herokuapp.com/read"],
+    },
+  })
+app.get('/read',cspHeader, async (req, res) => {
     try{
         let results =await queryDataFromSF()
-        res.json(results);
+        res.json(results);res.
         console.log('Priniting the accounts: ',results)
     }
     catch(error){
