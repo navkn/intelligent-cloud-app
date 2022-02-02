@@ -14,8 +14,8 @@ const app = express();
 
 var jwtToken;
 var conn ;
-console.log('Path of dir :',DIST_DIR);//dist
-console.log('Path of __dirname',__dirname);//src/server/api.js
+console.log('Path of dir :',DIST_DIR);//      --->  dist
+console.log('Path of __dirname',__dirname);// -- >  app/src/server
 establishConnectionToSF();
 
 app.use(express.static(DIST_DIR));
