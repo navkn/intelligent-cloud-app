@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 var jwtToken;
-var conn ;
+var conn ;console.log('Path of dir :',DIST_DIR)
 establishConnectionToSF();
 
 app.use(express.static(DIST_DIR));
@@ -21,9 +21,7 @@ app.use(helmet())
 app.use(helmet({ crossOriginEmbedderPolicy: true }))
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(compression());
-app.get('/home', (req, res) => {
-    res.sendFile(path.resolve(DIST_DIR, 'index.html'));
-});
+app.use('/home', express.static(DIST_DIR));
 app.get('/read', async (req, res) => {
     try{
         let results =await queryDataFromSF()
