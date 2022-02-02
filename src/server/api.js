@@ -6,14 +6,16 @@ const { getToken } = require('sf-jwt-token')
 const jsforce = require('jsforce')
 const path = require('path');
 
-const DIST_DIR = './dist';
+const DIST_DIR = 'dist';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
 var jwtToken;
-var conn ;console.log('Path of dir :',DIST_DIR)
+var conn ;
+console.log('Path of dir :',DIST_DIR);//dist
+console.log('Path of __dirname',__dirname);//src/server/api.js
 establishConnectionToSF();
 
 app.use(express.static(DIST_DIR));
@@ -21,7 +23,7 @@ app.use(helmet())
 app.use(helmet({ crossOriginEmbedderPolicy: true }))
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(compression());
-app.use('/home', express.static(DIST_DIR));
+//app.use('/home', express.static(DIST_DIR));
 app.get('/read', async (req, res) => {
     try{
         let results =await queryDataFromSF()
