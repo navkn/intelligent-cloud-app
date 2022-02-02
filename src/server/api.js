@@ -17,9 +17,10 @@ var conn ;
 console.log('Path of dir :',DIST_DIR);//      --->  dist
 console.log('Path of __dirname',path.join(__dirname,'.../dist'));// -- >  app/src/server
 console.log('Path of __dirname',path.join(__dirname,'.../dist/resources/assets'));
+console.log('Path of __dirname',path.join(__dirname,'/../dist/resources/assets'));
 establishConnectionToSF();
 
-app.use(express.static(path.join(__dirname,'.../dist')));
+app.use(express.static(path.join(__dirname,'/../dist')));
 app.use(helmet())
 app.use(helmet({ crossOriginEmbedderPolicy: true }))
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
