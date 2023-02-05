@@ -6,7 +6,7 @@ const { getToken } = require('sf-jwt-token')
 const jsforce = require('jsforce')
 const path = require('path');
 
-const DIST_DIR = 'dist';
+const DIST_DIR = './dist';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3001;
 
@@ -14,13 +14,11 @@ const app = express();
 
 var jwtToken;
 var conn ;
-console.log('Path of dir :',DIST_DIR);//      --->  dist
-console.log('Path of __dirname',path.join(__dirname,'.../dist'));// -- >  app/src/server
-console.log('Path of __dirname',path.join(__dirname,'.../dist/resources/assets'));
-console.log('Path of __dirname',path.join(__dirname,'/.../dist/resources/assets'));
+console.log('Path of dir :',path.join(DIST_DIR,'/SLDS/assets'));//      --->  dist
+console.log('Path of __dirname',path.join(__dirname,'/../dist'));// -- >  app/src/server
 establishConnectionToSF();
 
-app.use(express.static(path.join(__dirname,'/.../dist')));
+app.use(express.static(DIST_DIR));//appends the dist folder to the root
 app.use(helmet())
 app.use(helmet({ crossOriginEmbedderPolicy: true }))
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));

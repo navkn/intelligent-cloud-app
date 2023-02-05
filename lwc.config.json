@@ -5,6 +5,9 @@
         },
         {
             "npm": "lightning-base-components"
+        },
+        {
+            "npm": "@salesforce-ux/design-system"
         }
     ]
 }
